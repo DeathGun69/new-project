@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body {
+    overflow: hidden;
+    font-family: Roboto, sans-serif;
+}
+
+.row-custome {
+    min-height: calc(100vh - 40px);
+}
+
+.content {
+    overflow-y: auto;
+    max-height: calc(100vh - 40px);
+}
+
+#chart {
+    max-width: 650px;
+    margin: 35px auto;
+  }

@@ -128,17 +128,7 @@ require_once("connect_db.php");
 
                                     $querySum = "SELECT date, population FROM `statistics_district` WHERE date = $i";
                                     $resultSum = mysqli_query($connect, $querySum);
-
-                                    
-
-                                    while ($populSum = mysqli_fetch_array($resultSum);) {
-                                        $arrayPopul = $populSum[];
-                                    }
-
-                                    print_r($populSum);
-
-                                    
-
+                                    //Проблемы с запросом для вывода суммы
                                     ?>
                                 </tr>
                             </thead>

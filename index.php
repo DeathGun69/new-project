@@ -78,7 +78,7 @@ require_once("connect_db.php");
 
                 <!-- Здесь будет выводиться таблица показателей -->
 
-                <!-- <div class="table">
+                <div class="table">
                     <br>
                     <div class="label">
                         <label class="prefix">Динамика населения Иркутской области по территориям, включая города</label>
@@ -89,54 +89,54 @@ require_once("connect_db.php");
                             <tr>
                                 <th scope="col">#</th>
                                 <?php
-                                // $query = "SELECT DISTINCT `date` FROM `statistics_district`";
+                                $query = "SELECT DISTINCT `date` FROM `statistics_district`";
 
-                                // $resultDate = mysqli_query($connect, $query);
+                                $resultDate = mysqli_query($connect, $query);
 
-                                // while ($date = mysqli_fetch_array($resultDate)) {
-                                //     echo "<th scope='col'>" . $date["date"] . "</th>";
-                                // }
+                                while ($date = mysqli_fetch_array($resultDate)) {
+                                    echo "<th scope='col'>" . $date["date"] . "</th>";
+                                }
                                 ?>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             //Запрос на вывод районов
-                            // $queryR = "SELECT raion_name FROM `raion`";
+                            $queryR = "SELECT raion_name FROM `raion`";
 
-                            // $resultRaion = mysqli_query($connect, $queryR);
-                            // $i = 1;
+                            $resultRaion = mysqli_query($connect, $queryR);
+                            $i = 1;
 
-                            // while ($raion = mysqli_fetch_array($resultRaion)) {
+                            while ($raion = mysqli_fetch_array($resultRaion)) {
 
-                            //     //Запрос по населению
-                            //     $queryP = "SELECT id_raion, population  FROM `statistics_district` WHERE id_raion = $i";
+                                //Запрос по населению
+                                // $queryP = "SELECT id_raion, population  FROM `statistics_district` WHERE id_raion = $i";
 
-                            //     $resultPopul = mysqli_query($connect, $queryP);
+                                // $resultPopul = mysqli_query($connect, $queryP);
 
-                            //     echo "<tr>";
-                            //     echo "<th scope='row'>" . $raion["raion_name"] . "</th>";
+                                echo "<tr>";
+                                echo "<th scope='row'>" . $raion["raion_name"] . "</th>";
 
-                            //     while ($popul = mysqli_fetch_array($resultPopul)) {
-                            //         echo "<td>" . $popul["population"] . "</td>";
-                            //     }
-                            //     $i++;
+                                // while ($popul = mysqli_fetch_array($resultPopul)) {
+                                //     echo "<td>" . $popul["population"] . "</td>";
+                                // }
+                                // $i++;
 
-                            //     echo "</tr>";
-                            // }
+                                echo "</tr>";
+                            }
                             ?>
                             <thead>
                                 <tr>
                                     <th scope="col">Всего населения:</th>
                                     <?php
 
-                                    // $querySum = "SELECT date, ROUND(SUM(population),2) as sumPopul FROM `statistics_district` GROUP BY date";
+                                    $querySum = "SELECT date, ROUND(SUM(population),2) as sumPopul FROM `statistics_district` GROUP BY date";
 
-                                    // $resultSum = mysqli_query($connect, $querySum);
+                                    $resultSum = mysqli_query($connect, $querySum);
 
-                                    // while ($populSum = mysqli_fetch_array($resultSum)) {
-                                    //     echo "<th scope='col'>" . $populSum["sumPopul"] . "</th>";
-                                    // }
+                                    while ($populSum = mysqli_fetch_array($resultSum)) {
+                                        echo "<th scope='col'>" . $populSum["sumPopul"] . "</th>";
+                                    }
                                     ?>
                                 </tr>
                             </thead>
@@ -145,7 +145,7 @@ require_once("connect_db.php");
                 </div>
                 <div class="label">
                     <label class="prefix">Здесь должна быть диаграмма</label>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

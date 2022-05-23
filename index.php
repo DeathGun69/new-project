@@ -81,7 +81,7 @@ require_once("connect_db.php");
                 <div class="table">
                     <br>
                     <div class="label">
-                        <label class="prefix">Динамика населения Иркутской области по территориям, включая города</label>
+                        <label class="prefix">Комплексный показатель пожарной опасности территории</label>
                     </div>
                     <br>
                     <table class="table">
@@ -96,50 +96,113 @@ require_once("connect_db.php");
                                 while ($date = mysqli_fetch_array($resultDate)) {
                                     echo "<th scope='col'>" . $date["date"] . "</th>";
                                 }
+                                echo "<th scope='col'>Среднее</th>";
                                 ?>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <th scope='row'>Иркутский</th>
+                                <td class="bg-success text-white">4,09</td>
+                                <td class="bg-warning text-dark">5,18</td>
+                                <td class="bg-success text-white">3,10</td>
+                                <td class="bg-success text-white">3,22</td>
+                                <td class="bg-success text-white">3,27</td>
+                                <td class="bg-success text-white">3,69</td>
+                                <td class="bg-success text-white">4,17</td>
+                                <td class="bg-success text-white">3,75</td>
+                                <td class="bg-success text-white">3,56</td>
+                                <td class="bg-success text-white">4,52</td>
+                                <td class="bg-success text-white">3,64</td>
+                                <th class="bg-success text-white" scope='row' >3,84</th>
+                            </tr>
+                            <tr>
+                                <th scope='row'>Братский</th>
+                                <td class="bg-success text-white">4,53</td>
+                                <td class="bg-success text-white">4,43</td>
+                                <td class="bg-warning text-dark">5,39</td>
+                                <td class="bg-warning text-dark">5,07</td>
+                                <td class="bg-success text-white">4,72</td>
+                                <td class="bg-success text-white">4,66</td>
+                                <td class="bg-success text-white">4,64</td>
+                                <td class="bg-success text-white">4,87</td>
+                                <td class="bg-warning text-dark">5,53</td>
+                                <td class="bg-success text-white">4,12</td>
+                                <td class="bg-success text-white">4,04</td>
+                                <th class="bg-success text-white" scope='row' >4,73</th>
+                            </tr>
+                            <tr>
+                                <th scope='row'>Боханский</th>
+                                <td class="bg-success text-white">4,92</td>
+                                <td class="bg-success text-white">4,93</td>
+                                <td class="bg-success text-white">4,10</td>
+                                <td class="bg-warning text-dark">5,41</td>
+                                <td class="bg-success text-white">4,30</td>
+                                <td class="bg-success text-white">4,07</td>
+                                <td class="bg-success text-white">4,75</td>
+                                <td class="bg-success text-white">3,72</td>
+                                <td class="bg-warning text-dark">7,04</td>
+                                <td class="bg-warning text-dark">5,21</td>
+                                <td class="bg-success text-white">4,55</td>
+                                <th class="bg-success text-white" scope='row' >4,82</th>
+                            </tr>					
+                            <tr>
+                                <th scope='row'>Баяндаевский</th>
+                                <td class="bg-success text-white">2,15</td>
+                                <td class="bg-success text-white">4,82</td>
+                                <td class="bg-success text-white">4,93</td>
+                                <td class="bg-warning text-dark">5,82</td>
+                                <td class="bg-warning text-dark">6,34</td>
+                                <td class="bg-success text-white">2,72</td>
+                                <td class="bg-success text-white">4,62</td>
+                                <td class="bg-warning text-dark">5,58</td>
+                                <td class="bg-success text-white">3,88</td>
+                                <td class="bg-warning text-dark">6,17</td>
+                                <td class="bg-warning text-dark">6,04</td>
+                                <th class="bg-success text-white" scope='row'>4,82</th>
+                            </tr>
+                            <tr>
+                                <th scope='row'></th>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-warning text-dark"></td>
+                                <td class="bg-warning text-dark"></td>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-warning text-dark"></td>
+                                <td class="bg-success text-white"></td>
+                                <td class="bg-success text-white"></td>
+                                <th class="bg-success text-white" scope='row' ></th>
+                            </tr>
+
+                            																			
                             <?php
                             //Запрос на вывод районов
-                            $queryR = "SELECT raion_name FROM `raion`";
+                            // $queryR = "SELECT raion_name FROM `raion`";
 
-                            $resultRaion = mysqli_query($connect, $queryR);
-                            $i = 1;
+                            // $resultRaion = mysqli_query($connect, $queryR);
+                            // $i = 1;
 
-                            while ($raion = mysqli_fetch_array($resultRaion)) {
+                            // while ($raion = mysqli_fetch_array($resultRaion)) {
 
-                                //Запрос по населению
-                                // $queryP = "SELECT id_raion, population  FROM `statistics_district` WHERE id_raion = $i";
+                            //     //Запрос по населению
+                            //     // $queryP = "SELECT id_raion, population  FROM `statistics_district` WHERE id_raion = $i";
 
-                                // $resultPopul = mysqli_query($connect, $queryP);
+                            //     // $resultPopul = mysqli_query($connect, $queryP);
 
-                                echo "<tr>";
-                                echo "<th scope='row'>" . $raion["raion_name"] . "</th>";
+                            //     echo "<tr>";
+                            //     echo "<th scope='row'>" . $raion["raion_name"] . "</th>";
 
-                                // while ($popul = mysqli_fetch_array($resultPopul)) {
-                                //     echo "<td>" . $popul["population"] . "</td>";
-                                // }
-                                // $i++;
+                            //     // while ($popul = mysqli_fetch_array($resultPopul)) {
+                            //     //     echo "<td>" . $popul["population"] . "</td>";
+                            //     // }
+                            //     // $i++;
 
-                                echo "</tr>";
-                            }
+                            //     echo "</tr>";
+                            // }
                             ?>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Всего населения:</th>
-                                    <?php
-
-                                    $querySum = "SELECT date, ROUND(SUM(population),2) as sumPopul FROM `statistics_district` GROUP BY date";
-
-                                    $resultSum = mysqli_query($connect, $querySum);
-
-                                    while ($populSum = mysqli_fetch_array($resultSum)) {
-                                        echo "<th scope='col'>" . $populSum["sumPopul"] . "</th>";
-                                    }
-                                    ?>
-                                </tr>
-                            </thead>
                         </tbody>
                     </table>
                 </div>

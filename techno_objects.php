@@ -82,7 +82,7 @@ require_once("connect_db.php");
                             while ($raion = mysqli_fetch_array($resultRaion)) {
 
                                 //Запрос по объектам техносферы
-                                $queryTO = "SELECT id_raion, technosphere_objects  FROM `statistics_district` WHERE id_raion = $i";
+                                $queryTO = "SELECT technosphere_objects  FROM `statistics_district` WHERE id_raion = $i";
 
                                 $resultTechno = mysqli_query($connect, $queryTO);
 
@@ -211,45 +211,46 @@ require_once("connect_db.php");
                         <tbody>
                             <?php
                             //Запрос на вывод районов
-                            // $queryRvp_TO = "SELECT ROUND(SUM(fire)/SUM(technosphere_objects),5) AS sumRvp_TO FROM `statistics_district` GROUP BY date";
+                            $queryRvp_TO = "SELECT ROUND(SUM(fire)/SUM(technosphere_objects),5) AS sumRvp_TO FROM `statistics_district` GROUP BY date";
 
-                            // $resultSumTO = mysqli_query($connect, $queryRvp_TO);
-                            // $sumTO = array();
+                            $resultSumTO = mysqli_query($connect, $queryRvp_TO);
+                            $pvpSumTO = mysqli_fetch_array($resultSumTO);
 
-                            // while ($pvpSumTO = mysqli_fetch_array($resultSumTO)) {
-                            //     $sumTO[] = array_values($pvpSumTO);
-                            // }
+                            //echo "<script>console.log($pvpSumTO);</script>";
+                            //print_r($pvpSumTO);                           
 
                             $queryR = "SELECT raion_name FROM `raion`";
 
                             $resultRaion = mysqli_query($connect, $queryR);
                             $a = 1;
+                            $year = 2010;
 
                             while ($raion = mysqli_fetch_array($resultRaion)) {
 
                                 //Запрос по Rвп
-                                $queryTO = "SELECT ROUND((fire/technosphere_objects),5) AS rvp_TO FROM `statistics_district` WHERE id_raion = $a";
+                                $queryTO = "SELECT ROUND((ROUND((fire/technosphere_objects),5)) / (SELECT ROUND(SUM(fire)/SUM(technosphere_objects),5) AS sumRvp_TO FROM `statistics_district` WHERE date = $year), 5) AS pvp_TO FROM `statistics_district` WHERE id_raion = $a";
 
                                 $resultTO = mysqli_query($connect, $queryTO);
+                                $rvpTO = mysqli_fetch_array($resultTO);
+
+                                //print_r($rvpTO);
 
                                 echo "<tr>";
                                 echo "<th scope='row'>" . $raion["raion_name"] . "</th>";
-
-                                //$arr = array();
+                                
                                 while ($fire = mysqli_fetch_array($resultTO)) {
-
-                                    //$arr[] = array_values($fire);
-                                    echo "<td>" . $arr["rvp_TO"] . "</td>";
+                                    echo "<td>" . $fire["pvp_TO"] . "</td>";
                                 }
                                 $a++;
 
-                                // for ($i=0, $size = count($arr); $i < $size; $i++) { 
-                                //     # code...
-                                // }
-
-                                // print_r($arr);
-
                                 echo "</tr>";
+
+                                //$arr = array();
+                                // while ($fire = mysqli_fetch_array($resultTO)) {
+
+                                //     //$arr[] = array_values($fire);
+                                //     echo "<td>" . $arr["rvp_TO"] . "</td>";
+                                // }
                             }
                             ?>
                         </tbody>

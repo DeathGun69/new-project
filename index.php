@@ -27,10 +27,9 @@ require_once("connect_db.php");
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Пожары</a>
+                    <a class="nav-link active" aria-current="page" href="map.php">Карта</a>
                     <a class="nav-link" href="#">Графики</a>
-                    <a class="nav-link" href="#">Pricing</a>
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="#"></a>
                 </div>
             </div>
         </div>

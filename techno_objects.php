@@ -210,11 +210,19 @@ require_once("connect_db.php");
                         </thead>
                         <tbody>
                             <?php
-                            //Запрос на вывод районов
-                            $queryRvp_TO = "SELECT ROUND(SUM(fire)/SUM(technosphere_objects),5) AS sumRvp_TO FROM `statistics_district` GROUP BY date";
+                            //Запрос на вывод сумарно по области Rvp
+                            // $queryRvp_TO = "SELECT ROUND(SUM(fire)/SUM(technosphere_objects),5) AS sumRvp_TO FROM `statistics_district` GROUP BY date";
+                            $queryRvp_TO = "SELECT technosphere_objects FROM `statistics_district` WHERE date = 2010";
 
                             $resultSumTO = mysqli_query($connect, $queryRvp_TO);
-                            $pvpSumTO = mysqli_fetch_array($resultSumTO);
+                            $pvpSumTO = mysqli_fetch_all($resultSumTO);
+                            
+                            print_r($pvpSumTO);
+
+                            // foreach ($pvpSumTO as $key => $value) {
+                            //     echo "Номер: ".$key ." Значение: ".$value;
+                            //     echo "<br>";
+                            // }
 
                             //echo "<script>console.log($pvpSumTO);</script>";
                             //print_r($pvpSumTO);                           
@@ -238,9 +246,9 @@ require_once("connect_db.php");
                                 echo "<tr>";
                                 echo "<th scope='row'>" . $raion["raion_name"] . "</th>";
                                 
-                                while ($fire = mysqli_fetch_array($resultTO)) {
-                                    echo "<td>" . $fire["pvp_TO"] . "</td>";
-                                }
+                                // while ($fire = mysqli_fetch_array($resultTO)) {
+                                //     echo "<td>" . $fire["pvp_TO"] . "</td>";
+                                // }
                                 $a++;
 
                                 echo "</tr>";
